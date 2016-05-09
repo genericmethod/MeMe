@@ -71,8 +71,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     func createAndPresentImagePicker(sourceType: UIImagePickerControllerSourceType){
         let pickerController = UIImagePickerController()
-        pickerController.delegate = self
         pickerController.sourceType = sourceType
+        pickerController.delegate = self
         self.presentViewController(pickerController, animated: true, completion: nil)
     }
     
@@ -80,14 +80,15 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         
         let memedImage = generateMemedImage()
         let activityController = UIActivityViewController(activityItems: [memedImage], applicationActivities:nil);
-        self.presentViewController(activityController, animated: true, completion: nil)
-        save(memedImage)
+        self.presentViewController(activityController, animated: true, completion: {
+            self.save(memedImage)
+        })
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]){
-        
             if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
                 imagePickerView.image = image
+                print("Image Set")
             }
             
             dismissViewControllerAnimated(true, completion: nil)
