@@ -14,6 +14,7 @@
 		D2FD012C1CDCAD5600496433 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2FD012A1CDCAD5600496433 /* LaunchScreen.storyboard */; };
 		D2FD01371CDCAD5600496433 /* memeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FD01361CDCAD5600496433 /* memeTests.swift */; };
 		D2FD01421CDCAD5600496433 /* memeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FD01411CDCAD5600496433 /* memeUITests.swift */; };
+		D2FD01531CDDD75300496433 /* MemeTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FD01521CDDD75300496433 /* MemeTextFieldDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		D2FD013D1CDCAD5600496433 /* memeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = memeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2FD01411CDCAD5600496433 /* memeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = memeUITests.swift; sourceTree = "<group>"; };
 		D2FD01431CDCAD5600496433 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D2FD01521CDDD75300496433 /* MemeTextFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeTextFieldDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 		D2FD01201CDCAD5600496433 /* meme */ = {
 			isa = PBXGroup;
 			children = (
+				D2FD01511CDDD72E00496433 /* delegates */,
 				D2FD01211CDCAD5600496433 /* AppDelegate.swift */,
 				D2FD01231CDCAD5600496433 /* ViewController.swift */,
 				D2FD01251CDCAD5600496433 /* Main.storyboard */,
@@ -123,6 +126,14 @@
 				D2FD01431CDCAD5600496433 /* Info.plist */,
 			);
 			path = memeUITests;
+			sourceTree = "<group>";
+		};
+		D2FD01511CDDD72E00496433 /* delegates */ = {
+			isa = PBXGroup;
+			children = (
+				D2FD01521CDDD75300496433 /* MemeTextFieldDelegate.swift */,
+			);
+			name = delegates;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,6 +268,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2FD01241CDCAD5600496433 /* ViewController.swift in Sources */,
+				D2FD01531CDDD75300496433 /* MemeTextFieldDelegate.swift in Sources */,
 				D2FD01221CDCAD5600496433 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -398,9 +410,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = meme/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.genericmethod.meme;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -409,9 +423,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = meme/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.genericmethod.meme;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -482,6 +498,7 @@
 				D2FD01481CDCAD5600496433 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D2FD01491CDCAD5600496433 /* Build configuration list for PBXNativeTarget "memeTests" */ = {
 			isa = XCConfigurationList;
@@ -490,6 +507,7 @@
 				D2FD014B1CDCAD5600496433 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D2FD014C1CDCAD5600496433 /* Build configuration list for PBXNativeTarget "memeUITests" */ = {
 			isa = XCConfigurationList;
@@ -498,6 +516,7 @@
 				D2FD014E1CDCAD5600496433 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
