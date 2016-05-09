@@ -128,11 +128,21 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func keyboardWillShow(notification: NSNotification) {
-        self.view.frame.origin.y -= getKeyboardHeight(notification)
+        
+        if bottomText.isFirstResponder(){
+            self.view.frame.origin.y -= getKeyboardHeight(notification)
+        } else {
+            view.frame.origin.y = 0
+        }
     }
     
     func keyboardWillHide(notification: NSNotification) {
-        self.view.frame.origin.y += getKeyboardHeight(notification)
+        
+        if bottomText.isFirstResponder(){
+            self.view.frame.origin.y += getKeyboardHeight(notification)
+        } else {
+            view.frame.origin.y = 0
+        }
     }
     
     func getKeyboardHeight(notification: NSNotification) -> CGFloat {
