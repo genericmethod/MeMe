@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment version="2048" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -15,33 +15,23 @@
                         <viewControllerLayoutGuide type="bottom" id="nKD-ic-gT4"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0PI-6A-qw4">
-                                <rect key="frame" x="0.0" y="38" width="414" height="44"/>
-                                <items>
-                                    <barButtonItem systemItem="action" id="TeU-Wj-OzE">
-                                        <connections>
-                                            <action selector="shareImage:" destination="BYZ-38-t0r" id="xn0-xN-2bX"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="TOP" placeholder="TOP" textAlignment="center" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="D4D-3S-PUN">
-                                <rect key="frame" x="49" y="122" width="316" height="30"/>
+                                <rect key="frame" x="49" y="122" width="502" height="30"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="40"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="BOTTOM" placeholder="BOTTOM" textAlignment="center" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="AK4-zg-K0w">
-                                <rect key="frame" x="46" y="582" width="322" height="30"/>
+                                <rect key="frame" x="46" y="429" width="508" height="34"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="40"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fFm-CH-Pgb">
-                                <rect key="frame" x="0.0" y="692" width="414" height="44"/>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleAspectFit" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fFm-CH-Pgb">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="t3n-pP-dld"/>
                                     <barButtonItem title="Album" id="93Z-hl-3YZ">
@@ -59,19 +49,26 @@
                                 </items>
                             </toolbar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sBc-Eg-uw8">
-                                <rect key="frame" x="0.0" y="82" width="414" height="610"/>
+                                <rect key="frame" x="0.0" y="44" width="600" height="512"/>
                             </imageView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0PI-6A-qw4">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem systemItem="action" id="TeU-Wj-OzE">
+                                        <connections>
+                                            <action selector="shareImage:" destination="BYZ-38-t0r" id="xn0-xN-2bX"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="D4D-3S-PUN" firstAttribute="top" secondItem="EXR-Ji-g4F" secondAttribute="bottom" constant="102" id="3Xd-KX-vBe"/>
                             <constraint firstItem="nKD-ic-gT4" firstAttribute="top" secondItem="AK4-zg-K0w" secondAttribute="bottom" constant="124" id="BA8-Gu-o7s"/>
-                            <constraint firstItem="fFm-CH-Pgb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="EUN-4q-V9a"/>
-                            <constraint firstItem="nKD-ic-gT4" firstAttribute="top" secondItem="fFm-CH-Pgb" secondAttribute="bottom" id="FB0-x1-JLb"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="fFm-CH-Pgb" secondAttribute="trailing" id="If0-Jp-uom"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="fFm-CH-Pgb" secondAttribute="trailingMargin" id="JnM-FZ-4Lk"/>
                             <constraint firstAttribute="trailingMargin" secondItem="AK4-zg-K0w" secondAttribute="trailing" constant="26" id="LVx-lU-6zM"/>
                             <constraint firstAttribute="trailingMargin" secondItem="sBc-Eg-uw8" secondAttribute="trailing" id="MCB-oq-yGm"/>
-                            <constraint firstItem="fFm-CH-Pgb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="ZJ9-81-w4F"/>
                             <constraint firstItem="sBc-Eg-uw8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="cY6-39-Q3O"/>
                             <constraint firstAttribute="trailingMargin" secondItem="D4D-3S-PUN" secondAttribute="trailing" constant="29" id="cbx-X3-HT7"/>
                             <constraint firstItem="nKD-ic-gT4" firstAttribute="top" secondItem="sBc-Eg-uw8" secondAttribute="bottom" id="dVO-Yq-QLb"/>
@@ -79,9 +76,10 @@
                             <constraint firstItem="D4D-3S-PUN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="29" id="lsW-xm-t0c"/>
                             <constraint firstItem="sBc-Eg-uw8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="qdQ-8o-L0N"/>
                             <constraint firstItem="sBc-Eg-uw8" firstAttribute="top" secondItem="EXR-Ji-g4F" secondAttribute="bottom" id="w7Y-iW-n4x"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="fFm-CH-Pgb" secondAttribute="leadingMargin" id="xKZ-K3-N8I"/>
+                            <constraint firstItem="nKD-ic-gT4" firstAttribute="top" secondItem="fFm-CH-Pgb" secondAttribute="bottom" id="yh3-TQ-LC8"/>
                         </constraints>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="bottomText" destination="AK4-zg-K0w" id="mjV-OI-NE0"/>
                         <outlet property="bottomToolbar" destination="fFm-CH-Pgb" id="xWy-uF-Ia2"/>
@@ -94,7 +92,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="129" y="405"/>
+            <point key="canvasLocation" x="241" y="427"/>
         </scene>
     </scenes>
 </document>
