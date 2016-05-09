@@ -8,7 +8,8 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+
+class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var imagePickerView: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
@@ -36,8 +37,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
+        initTextField(topText)
+        initTextField(bottomText)
+    }
+    
+    func initTextField(textField: UITextField){
+
         let memeTextAttributes = [
             NSStrokeColorAttributeName : UIColor.blackColor(),
             NSForegroundColorAttributeName : UIColor.whiteColor(),
@@ -45,34 +50,30 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
             NSStrokeWidthAttributeName : -3.0
         ]
-        
-        topText.delegate = memeTextFieldDelegate
-        bottomText.delegate = memeTextFieldDelegate
-        
-        topText.defaultTextAttributes = memeTextAttributes
-        bottomText.defaultTextAttributes = memeTextAttributes
-        
-        topText.textAlignment = .Center
-        bottomText.textAlignment = .Center
-        
+
+        textField.delegate = memeTextFieldDelegate
+        textField.defaultTextAttributes = memeTextAttributes
+        textField.textAlignment = .Center
+
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true     // status bar should be hidden
     }
     
     @IBAction func pickAnImageFromAlbum(sender: AnyObject) {
-        
-        let pickerController = UIImagePickerController()
-        pickerController.delegate = self
-        pickerController.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
-        self.presentViewController(pickerController, animated: true, completion: nil)
-    
+        createAndPresentImagePicker(UIImagePickerControllerSourceType.PhotoLibrary)
     }
     
     @IBAction func pickAnImageFromCamera(sender: AnyObject) {
-        
+        createAndPresentImagePicker(UIImagePickerControllerSourceType.Camera)
+    }
+    
+    func createAndPresentImagePicker(sourceType: UIImagePickerControllerSourceType){
         let pickerController = UIImagePickerController()
         pickerController.delegate = self
-        pickerController.sourceType = UIImagePickerControllerSourceType.Camera
+        pickerController.sourceType = sourceType
         self.presentViewController(pickerController, animated: true, completion: nil)
-        
     }
     
     @IBAction func shareImage(sender: AnyObject){
@@ -80,7 +81,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let memedImage = generateMemedImage()
         let activityController = UIActivityViewController(activityItems: [memedImage], applicationActivities:nil);
         self.presentViewController(activityController, animated: true, completion: nil)
-        
+        save(memedImage)
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]){
@@ -116,10 +117,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         return memedImage
     }
     
-    func save() {
-        //Create the meme
-        
-        let memedImage = generateMemedImage()
+    func save(memedImage: UIImage) {
         
         let meme = Meme( topText: topText.text!,
             bottomText:bottomText.text!,
@@ -127,10 +125,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             memedImage: memedImage)
     }
     
+    ///KEYBOARD
     func keyboardWillShow(notification: NSNotification) {
         
         if bottomText.isFirstResponder(){
-            self.view.frame.origin.y -= getKeyboardHeight(notification)
+            self.view.frame.origin.y = getKeyboardHeight(notification) * -1
         } else {
             view.frame.origin.y = 0
         }
@@ -139,9 +138,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func keyboardWillHide(notification: NSNotification) {
         
         if bottomText.isFirstResponder(){
-            self.view.frame.origin.y += getKeyboardHeight(notification)
-        } else {
-            view.frame.origin.y = 0
+            self.view.frame.origin.y = 0
         }
     }
     
@@ -164,13 +161,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         NSNotificationCenter.defaultCenter().removeObserver(self, name:
             UIKeyboardWillHideNotification, object: nil)
     }
+    
+    //END KEYBOARD
 
 }
 
-struct Meme {
-    var topText: String
-    var bottomText: String
-    var image: UIImage
-    var memedImage: UIImage
-}
+
 
