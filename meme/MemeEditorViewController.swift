@@ -80,9 +80,15 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         
         let memedImage = generateMemedImage()
         let activityController = UIActivityViewController(activityItems: [memedImage], applicationActivities:nil);
-        self.presentViewController(activityController, animated: true, completion: {
-            self.save(memedImage)
-        })
+        
+        activityController.completionWithItemsHandler = {(activityType, completed:Bool, returnedItems:[AnyObject]?, error: NSError?) in
+            
+            // save if completed
+            if (completed) {
+                self.save(memedImage)
+            }
+        }
+        self.presentViewController(activityController, animated: true, completion: nil)
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]){
@@ -117,7 +123,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         return memedImage
     }
     
-    func save(memedImage: UIImage) {
+    func save(memedImage:UIImage) {
         
         let meme = Meme( topText: topText.text!,
             bottomText:bottomText.text!,
